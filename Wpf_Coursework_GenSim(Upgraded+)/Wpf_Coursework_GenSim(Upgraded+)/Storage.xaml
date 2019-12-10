@@ -13,10 +13,8 @@
         Background="LightGray">
     <Window.Resources>
         <Style TargetType="Image">
-            <Setter Property="Height" Value="25"/>
-            <Setter Property="Width" Value="25"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="35"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Height" Value="50"/>
@@ -34,21 +32,21 @@
         </StackPanel>
         <ListView Margin="10" 
                   Name="StorageList"
-                  DockPanel.Dock="Left">
+                  DockPanel.Dock="Left"
+                  SelectionChanged="StorageList_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Width="{Binding ActualWidth, ElementName=StorageList}" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-            <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-            <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-            <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                    <Image Source="{Binding Path=Image}" />
+                    <TextBlock Text="{Binding Path=Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </DockPanel>
 </Window>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static Wpf_Coursework_GenSim_Upgraded__.GeneticSimulator;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
@@ -22,11 +23,19 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         public Storage()
         {
             InitializeComponent();
+            List<Bee> bees = new List<Bee>()
+            {
+                new Bee()
+                {
+                    Name="бджола"
+                    //Image=new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory,"Images\image.jpg"),UriKind.Absolute))      
+                }
+            };
+            StorageList.ItemsSource = bees;
         }
 
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Mouse_Down(object sender, MouseButtonEventArgs e)
         {
-           // DragDrop.DoDragDrop(this, imgBee, DragDropEffects.Move);
         }
 
         private void ImgBee_Drop(object sender, DragEventArgs e)
@@ -36,7 +45,12 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             Panel element = elem.Parent as Panel;
             element.Children.Remove(element);
 
-            //StorageGrid.Children.Add(element);
+            //StorageList.Children.Add(element);
+        }
+
+        private void StorageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DragDrop.DoDragDrop(this, this, DragDropEffects.Move);
         }
     }
 }

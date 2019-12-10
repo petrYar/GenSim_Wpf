@@ -119,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Arrow.png" />
-    <Resource Include="Images\CommonBee.png" />
     <Resource Include="Images\Four.png" />
     <Resource Include="Images\Honey.png" />
     <Resource Include="Images\One.png" />
