@@ -13,51 +13,42 @@
         Background="LightGray">
     <Window.Resources>
         <Style TargetType="Image">
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 10 0 0"/>
+        </Style>
     </Window.Resources>
-    <ListView Margin="10" 
-              Name="StorageList">
-        <ListView.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel Width="{Binding ActualWidth, ElementName=StorageList}" />
-            </ItemsPanelTemplate>
-        </ListView.ItemsPanel>
-        <Image Source="Images\CommonBee.png"
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="75">
+            <Button Content="Add"/>
+            <Button Content="Remove"/>
+            <Button Content="Find"/>
+            <Button Content="Clone"/>
+        </StackPanel>
+        <ListView Margin="10" 
+                  Name="StorageList"
+                  DockPanel.Dock="Left">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=StorageList}" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <Image Source="Images\CommonBee.png"
                Height="50"
                Width="50"/>
-        <Image Source="Images\CommonBee.png"
+            <Image Source="Images\CommonBee.png"
                Height="50"
                Width="50"/>
-        <Image Source="Images\CommonBee.png"
+            <Image Source="Images\CommonBee.png"
                Height="50"
                Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-        <Image Source="Images\CommonBee.png"
-               Height="50"
-               Width="50"/>
-    </ListView>
+        </ListView>
+    </DockPanel>
 </Window>
