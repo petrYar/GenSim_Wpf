@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         AllowDrop="True"
+        Drop="Window_Drop"
         Height="450"
         Width="525"
         ResizeMode="NoResize"
@@ -126,7 +127,7 @@
             <!--#endregion-->
             <!--#endregion-->
         </Grid>
-        <Grid DockPanel.Dock="Left" Width="75">
+        <Grid DockPanel.Dock="Left" Width="75" Name="gridBees">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>

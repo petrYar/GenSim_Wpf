@@ -9,7 +9,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
 {
     class GeneticSimulator
     {
-        class Bee : BeePrototype
+        public class Bee : BeePrototype
         {
             string name;
             public enum _Product { HoneyComb = 0, FrozenComb, WetComb, DryComb }
@@ -240,7 +240,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Effects = b_.Effects;
             }
         }
-        class BeesRegistry//prototypeRegistry
+        public class BeesRegistry//prototypeRegistry
         {
             List<Bee> standartBees = new List<Bee>();//List of bees that can be
             public BeesRegistry() { }
@@ -332,7 +332,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 }
             }
         }
-        interface BeePrototype //prototype
+        public interface BeePrototype //prototype
         {
             BeePrototype _Clone();
 

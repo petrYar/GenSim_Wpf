@@ -26,5 +26,14 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             Storage storage = new Storage();
             storage.Show();
         }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            Image l = e.Data.GetData(typeof(Image)) as Image;
+
+            Panel element = l.Parent as Panel;
+            element.Children.Remove(l);
+            gridBees.Children.Add(l);
+        }
     }
 }

@@ -22,19 +22,22 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         public Storage()
         {
             InitializeComponent();
+            StorageList.Items.Add(new GeneticSimulator.Bee());
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragDrop.DoDragDrop(imgBee, imgBee, DragDropEffects.Move);
+           // DragDrop.DoDragDrop(this, imgBee, DragDropEffects.Move);
         }
 
         private void ImgBee_Drop(object sender, DragEventArgs e)
         {
-            Image i = e.Data.GetData(typeof(Image)) as Image;
+            Image elem = e.Data.GetData(typeof(Image)) as Image;
 
-            StorageGrid.Children.Remove(i);
-            StorageGrid.Children.Add(i);
+            Panel element = elem.Parent as Panel;
+            element.Children.Remove(element);
+
+            //StorageGrid.Children.Add(element);
         }
     }
 }

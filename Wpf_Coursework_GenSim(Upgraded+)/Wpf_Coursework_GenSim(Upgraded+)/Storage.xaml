@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:Wpf_Coursework_GenSim_Upgraded__"
         AllowDrop="True"
         mc:Ignorable="d"
-    Title="Storage"
-        Height="450"
+        Title="Storage"
+        Drop="ImgBee_Drop"
+        Height="500"
         Width="500"
         Background="LightGray">
     <Window.Resources>
@@ -18,47 +19,45 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="10" Background="Gray" Name="StorageGrid"
-               MouseDown="Image_MouseDown"
-               Drop="ImgBee_Drop">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Image Grid.Row="0"
-               Grid.Column="0"
-               Source="CommonBee.png"
-               MouseDown="Image_MouseDown"
-               Drop="ImgBee_Drop"/>
-        <Image Grid.Row="0"
-               Grid.Column="1"
-               Source="CommonBee.png"
-               MouseDown="Image_MouseDown"
-               Drop="ImgBee_Drop"/>
-        <Image Grid.Row="0"
-               Name="imgBee"
-               Grid.Column="2"
-               Source="CommonBee.png"
-               MouseDown="Image_MouseDown"
-               Drop="ImgBee_Drop"/>
-        <Image Grid.Row="2"
-               Grid.Column="4"
-               Source="CommonBee.png"
-               MouseDown="Image_MouseDown"
-               Drop="ImgBee_Drop"/>
-    </Grid>
+    <ListView Margin="10" 
+              Name="StorageList">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Bee" DisplayMemberBinding="{Binding Bee}"/>
+            </GridView>
+        </ListView.View>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+        <Image Source="Images\CommonBee.png"
+               Height="50"
+               Width="50"/>
+    </ListView>
 </Window>
