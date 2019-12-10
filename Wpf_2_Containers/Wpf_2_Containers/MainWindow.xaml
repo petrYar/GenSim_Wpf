@@ -1,0 +1,12 @@
+﻿<Window x:Class="Wpf_2_Containers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_2_Containers"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <Canvas>
+        <Image x:Name="image" Source="Screenshot_613_2.png" Stretch="Fill" Canvas.Left="372" Canvas.Top="180"/>
+    </Canvas>
+</Window>
