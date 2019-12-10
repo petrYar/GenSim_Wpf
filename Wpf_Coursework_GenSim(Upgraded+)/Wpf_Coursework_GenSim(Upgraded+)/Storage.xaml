@@ -21,11 +21,11 @@
     </Window.Resources>
     <ListView Margin="10" 
               Name="StorageList">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="Bee" DisplayMemberBinding="{Binding Bee}"/>
-            </GridView>
-        </ListView.View>
+        <ListView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Width="{Binding ActualWidth, ElementName=StorageList}" />
+            </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
         <Image Source="Images\CommonBee.png"
                Height="50"
                Width="50"/>

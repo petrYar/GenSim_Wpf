@@ -22,7 +22,6 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         public Storage()
         {
             InitializeComponent();
-            StorageList.Items.Add(new GeneticSimulator.Bee());
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
