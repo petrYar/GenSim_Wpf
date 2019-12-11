@@ -25,7 +25,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             InitializeComponent();
             bees.StandartPack();
-            StorageList.ItemsSource = bees;
+            StorageList.ItemsSource = bees.GetList();
         }
 
         private void Mouse_Down(object sender, MouseButtonEventArgs e)

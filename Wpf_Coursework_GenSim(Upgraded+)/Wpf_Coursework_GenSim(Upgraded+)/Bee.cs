@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
+using System.Collections;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
@@ -372,6 +373,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 AddBee(new Bee(null, "4", Bee._Product.FrozenComb, Bee._BeeType.Frost, "Icy",
                     new Bee._Conditions(0, 30, Bee._Conditions._Flowers.Swamp, Bee._Conditions._Biom.Swamp),
                     new Bee._Gens(true)));
+            }
+            public List<Bee> GetList()
+            {
+                return this.standartBees;
             }
         }
         public interface BeePrototype //prototype
