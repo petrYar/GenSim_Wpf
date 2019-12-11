@@ -27,8 +27,8 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             {
                 new Bee()
                 {
-                    Name="бджола"
-                    //Image=new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory,"Images\image.jpg"),UriKind.Absolute))      
+                    Name="бджола",
+                    //Image = new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory, "Images\image.jpg"), UriKind.Absolute));     
                 }
             };
             StorageList.ItemsSource = bees;

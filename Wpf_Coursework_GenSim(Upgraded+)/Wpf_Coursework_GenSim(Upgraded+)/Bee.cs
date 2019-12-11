@@ -4,6 +4,8 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
@@ -114,8 +116,9 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 }
             }
             _Gens gens;
+            Image image;
 
-            public Bee(string name = "NoName", _Product product = _Product.HoneyComb, _BeeType beeType = _BeeType.Meadow,
+            public Bee(Image image, string name = "NoName", _Product product = _Product.HoneyComb, _BeeType beeType = _BeeType.Meadow,
                 string effects = "None", _Conditions conditions = new _Conditions(), _Gens gens = new _Gens())
             {
                 Name = name;
@@ -124,6 +127,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Conditions = conditions;
                 Gens = gens;
                 Effects = effects;
+                if (image == null)
+                    image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                else
+                    Image = image;
             }
             public Bee(Bee source)//конструктор-копії
             {
@@ -223,6 +230,22 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                     return this.effects;
                 }
             }
+            public Image Image//Image of bee
+            {
+                set
+                {
+                    if(value == null)
+                        this.image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                    else if (value.GetType() == image.GetType())
+                        this.image = value;
+                    else
+                        this.image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                }
+                get
+                {
+                    return this.image;
+                }
+            }
             #endregion
             public BeePrototype _Clone()
             {
@@ -238,15 +261,16 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Conditions = b_.Conditions;
                 Gens = b_.Gens;
                 Effects = b_.Effects;
+                Image = b_.Image;
             }
         }
         public class BeesRegistry//prototypeRegistry
         {
             List<Bee> standartBees = new List<Bee>();//List of bees that can be
             public BeesRegistry() { }
-            public void AddBee(string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens)//Add 1 bee to the List
+            public void AddBee(string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens, Image image)//Add 1 bee to the List
             {
-                standartBees.Add(new Bee(name, product, beeType, effects, conditions, gens));
+                standartBees.Add(new Bee(name, product, beeType, effects, conditions, gens, image));
             }
             public void AddBee(Bee bee)//Add 1 bee to the List
             {
@@ -276,6 +300,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             public void Clear() { standartBees.Clear(); }
             public void Info(int item)//all information about bee// сделать перегрузку
             {
+                //Here isn't coded an Image output.
                 if (item >= 0 && item < standartBees.Count)
                 {
                     Console.WriteLine("Name: " + standartBees[item].Name);
@@ -286,6 +311,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             }
             public void Info(Bee bee)//all information about bee// сделать перегрузку
             {
+                //Here isn't coded an Image output.
                 Console.WriteLine("Name: " + bee.Name);
                 Console.WriteLine("Product: " + bee.Product);
                 Console.WriteLine("BeeType: " + bee.BeeType);
@@ -310,6 +336,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             }
             public void ExtendedInfo(Bee elem)
             {
+                //Here isn't coded an Image output.
                 Console.WriteLine("Name: " + elem.Name);
                 Console.WriteLine("Product: " + elem.Product);
                 Console.WriteLine("BeeType: " + elem.BeeType);
@@ -340,239 +367,243 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             Bee._Product Product { get; set; }//what this bee can produce;
             Bee._BeeType BeeType { get; set; }//from which bees it created;
             Bee._Conditions Conditions { get; set; }//for life(temperature,humidity,flowers,biom);
-            Bee._Gens Gens { get; set; }
+            Bee._Gens Gens { get; set; }//Gens of Bee;
             string Effects { get; set; }//effects that bees produce when gamer nearby;
+            Image Image { get; set; }//Image of Bee;
         }
 
-        static void ShowMenu()
-        {
-            Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-            Console.WriteLine("|  1 - Add Bee                   |");
-            Console.WriteLine("|  2 - Remove Bee                |");
-            Console.WriteLine("|  3 - Find Bee (with name)      |");
-            Console.WriteLine("|  4 - Show all bees             |");
-            Console.WriteLine("|  5 - Show all bees [extended]  |");
-            Console.WriteLine("|  6 - Show concrete             |");
-            Console.WriteLine("|  7 - Show concrete [extended]  |");
-            Console.WriteLine("|  0 - Exit                      |");
-            Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
-        }
-        #region Enter
-        static string EnterStr
-        {
-            get
-            {
-                Console.WriteLine("Enter text:");
-                return Console.ReadLine();
-            }
-        }
-        static int EnterInt
-        {
-            get
-            {
-                Console.WriteLine("Enter number:");
-                int number = 0;
-                Regex regex = new Regex(@"\d+");
-                var match = regex.Match(Console.ReadLine());
-                if (match.Success)
-                    number = int.Parse(match.Value);
-                return number;
-            }
-        }
-        static bool EnterBool
-        {
-            get
-            {
-                Console.WriteLine("Enter bool(True or False?):");
-                bool result = false;
-                Regex regex = new Regex(@"True", RegexOptions.IgnoreCase);
-                var match = regex.Match(Console.ReadLine());
-                while (match.Success)
-                {
-                    if (match.Value.ToLower() == "true")
-                        result = true;
-                    match = match.NextMatch();
-                }
-                return result;
-            }
-        }
-        static Bee._Product EnterProd
-        {
-            get
-            {
-                int result;
-                do
-                {
-                    Console.WriteLine("Product");
-                    Console.WriteLine("1 - HoneyComb");
-                    Console.WriteLine("2 - FrozenComb");
-                    Console.WriteLine("3 - WetComb");
-                    Console.WriteLine("4 - DryComb");
-                    string text = Console.ReadLine();
-                    if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
-                    {
-                        result = text[0] - 48;
-                        break;
-                    }
-                    else
-                        Console.WriteLine("Incorrect product");
-                } while (true);
-                return (Bee._Product)result - 1;
-            }
-        }
-        static Bee._BeeType BeeType
-        {
-            get
-            {
-                int result;
-                do
-                {
-                    Console.WriteLine("Type of bee");
-                    Console.WriteLine("1 - Meadow");
-                    Console.WriteLine("2 - Frost");
-                    Console.WriteLine("3 - Forest");
-                    Console.WriteLine("4 - Desert");
-                    string text = Console.ReadLine();
-                    if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
-                    {
-                        result = text[0] - 48;
-                        break;
-                    }
-                    else
-                        Console.WriteLine("Incorrect type");
-                } while (true);
-                return (Bee._BeeType)result - 1;
-            }
-        }
-        static Bee._Conditions._Flowers Flowers
-        {
-            get
-            {
-                int result;
-                do
-                {
-                    Console.WriteLine("Flowers");
-                    Console.WriteLine("1 - Plains");
-                    Console.WriteLine("2 - Swamp");
-                    Console.WriteLine("3 - Jungle");
-                    Console.WriteLine("4 - Desert");
-                    string text = Console.ReadLine();
-                    if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
-                    {
-                        result = text[0] - 48;
-                        break;
-                    }
-                    else
-                        Console.WriteLine("Incorrect flowers");
-                } while (true);
-                return (Bee._Conditions._Flowers)result - 1;
-            }
-        }
-        static Bee._Conditions._Biom Biom
-        {
-            get
-            {
-                int result;
-                do
-                {
-                    Console.WriteLine("Biom");
-                    Console.WriteLine("1 - Plains");
-                    Console.WriteLine("2 - Swamp");
-                    Console.WriteLine("3 - Jungle");
-                    Console.WriteLine("4 - Desert");
-                    string text = Console.ReadLine();
-                    if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
-                    {
-                        result = text[0] - 48;
-                        break;
-                    }
-                    else
-                        Console.WriteLine("Incorrect flowers");
-                } while (true);
-                return (Bee._Conditions._Biom)result - 1;
-            }
-        }
-        static Bee._Conditions Conditions
-        {
-            get
-            {
-                int temperature = 0;
-                int humidity = 50;
-                do { Console.WriteLine("Temperature"); temperature = EnterInt; } while (temperature < -50 || temperature > 100);
-                do { Console.WriteLine("Humidity"); humidity = EnterInt; } while (humidity < 0 || humidity > 100);
-                Bee._Conditions condition = new Bee._Conditions(temperature, humidity, Flowers, Biom);
-                return condition;
-            }
-        }
-        static Bee._Gens Gens
-        {
-            get
-            {
-                Console.WriteLine("dominant");
-                bool dominant = EnterBool;
-                return new Bee._Gens(dominant);
-            }
-        }
-        #endregion
-        static Bee BeeGetter
-        {
-            get
-            {
-                Console.WriteLine("Enter name");
-                string name = EnterStr;
-                Console.WriteLine("Enter effect");
-                string effect = EnterStr;
-                return new Bee(name, EnterProd, BeeType, effect, Conditions, Gens);
-            }
-        }
-        static int Item(BeesRegistry registry)
-        {
-            int item;
-            do
-            {
-                Console.WriteLine("Enter index of bee");
-                item = EnterInt;
-                if (item >= 0 && item < registry.LastIndex)
-                    break;
-                else
-                    Console.WriteLine("Incorrect index");
-            } while (true);
-            return item;
-        }
+        //All under this line is for C# realization of output in Console of Windows.
 
-        static void Remove(BeesRegistry registry)
-        {
-            Console.WriteLine("Remove");
-            Console.WriteLine("0 - Exit");
-            Console.WriteLine("1 - Show all bees");
-            Console.WriteLine("2 - Delete with index");
-            Console.WriteLine("3 - Delete with name");
-            Console.WriteLine("4 - Delete concrete bee");
-            Console.WriteLine("5 - Delete ALL");
-            switch (Console.ReadLine()[0])
-            {
-                case '1':
-                    registry.ShowAll();
-                    break;
-                case '2':
-                    registry.RemoveBee(EnterInt);
-                    break;
-                case '3':
-                    registry.RemoveBee(EnterStr);
-                    break;
-                case '4':
-                    registry.RemoveBee(BeeGetter);
-                    break;
-                case '5':
-                    registry.Clear();
-                    break;
-                case '0':
-                    break;
-                default:
-                    Console.WriteLine("Incorrect input");
-                    break;
-            }
-        }
+        //static void ShowMenu()
+        //{
+        //    Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+        //    Console.WriteLine("|  1 - Add Bee                   |");
+        //    Console.WriteLine("|  2 - Remove Bee                |");
+        //    Console.WriteLine("|  3 - Find Bee (with name)      |");
+        //    Console.WriteLine("|  4 - Show all bees             |");
+        //    Console.WriteLine("|  5 - Show all bees [extended]  |");
+        //    Console.WriteLine("|  6 - Show concrete             |");
+        //    Console.WriteLine("|  7 - Show concrete [extended]  |");
+        //    Console.WriteLine("|  0 - Exit                      |");
+        //    Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+        //}
+        //#region Enter
+        //static string EnterStr
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine("Enter text:");
+        //        return Console.ReadLine();
+        //    }
+        //}
+        //static int EnterInt
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine("Enter number:");
+        //        int number = 0;
+        //        Regex regex = new Regex(@"\d+");
+        //        var match = regex.Match(Console.ReadLine());
+        //        if (match.Success)
+        //            number = int.Parse(match.Value);
+        //        return number;
+        //    }
+        //}
+        //static bool EnterBool
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine("Enter bool(True or False?):");
+        //        bool result = false;
+        //        Regex regex = new Regex(@"True", RegexOptions.IgnoreCase);
+        //        var match = regex.Match(Console.ReadLine());
+        //        while (match.Success)
+        //        {
+        //            if (match.Value.ToLower() == "true")
+        //                result = true;
+        //            match = match.NextMatch();
+        //        }
+        //        return result;
+        //    }
+        //}
+        //static Bee._Product EnterProd
+        //{
+        //    get
+        //    {
+        //        int result;
+        //        do
+        //        {
+        //            Console.WriteLine("Product");
+        //            Console.WriteLine("1 - HoneyComb");
+        //            Console.WriteLine("2 - FrozenComb");
+        //            Console.WriteLine("3 - WetComb");
+        //            Console.WriteLine("4 - DryComb");
+        //            string text = Console.ReadLine();
+        //            if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
+        //            {
+        //                result = text[0] - 48;
+        //                break;
+        //            }
+        //            else
+        //                Console.WriteLine("Incorrect product");
+        //        } while (true);
+        //        return (Bee._Product)result - 1;
+        //    }
+        //}
+        //static Bee._BeeType BeeType
+        //{
+        //    get
+        //    {
+        //        int result;
+        //        do
+        //        {
+        //            Console.WriteLine("Type of bee");
+        //            Console.WriteLine("1 - Meadow");
+        //            Console.WriteLine("2 - Frost");
+        //            Console.WriteLine("3 - Forest");
+        //            Console.WriteLine("4 - Desert");
+        //            string text = Console.ReadLine();
+        //            if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
+        //            {
+        //                result = text[0] - 48;
+        //                break;
+        //            }
+        //            else
+        //                Console.WriteLine("Incorrect type");
+        //        } while (true);
+        //        return (Bee._BeeType)result - 1;
+        //    }
+        //}
+        //static Bee._Conditions._Flowers Flowers
+        //{
+        //    get
+        //    {
+        //        int result;
+        //        do
+        //        {
+        //            Console.WriteLine("Flowers");
+        //            Console.WriteLine("1 - Plains");
+        //            Console.WriteLine("2 - Swamp");
+        //            Console.WriteLine("3 - Jungle");
+        //            Console.WriteLine("4 - Desert");
+        //            string text = Console.ReadLine();
+        //            if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
+        //            {
+        //                result = text[0] - 48;
+        //                break;
+        //            }
+        //            else
+        //                Console.WriteLine("Incorrect flowers");
+        //        } while (true);
+        //        return (Bee._Conditions._Flowers)result - 1;
+        //    }
+        //}
+        //static Bee._Conditions._Biom Biom
+        //{
+        //    get
+        //    {
+        //        int result;
+        //        do
+        //        {
+        //            Console.WriteLine("Biom");
+        //            Console.WriteLine("1 - Plains");
+        //            Console.WriteLine("2 - Swamp");
+        //            Console.WriteLine("3 - Jungle");
+        //            Console.WriteLine("4 - Desert");
+        //            string text = Console.ReadLine();
+        //            if (text[0] >= 48 && text[0] <= 57 - 5/*"5"*/)
+        //            {
+        //                result = text[0] - 48;
+        //                break;
+        //            }
+        //            else
+        //                Console.WriteLine("Incorrect flowers");
+        //        } while (true);
+        //        return (Bee._Conditions._Biom)result - 1;
+        //    }
+        //}
+        //static Bee._Conditions Conditions
+        //{
+        //    get
+        //    {
+        //        int temperature = 0;
+        //        int humidity = 50;
+        //        do { Console.WriteLine("Temperature"); temperature = EnterInt; } while (temperature < -50 || temperature > 100);
+        //        do { Console.WriteLine("Humidity"); humidity = EnterInt; } while (humidity < 0 || humidity > 100);
+        //        Bee._Conditions condition = new Bee._Conditions(temperature, humidity, Flowers, Biom);
+        //        return condition;
+        //    }
+        //}
+        //static Bee._Gens Gens
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine("dominant");
+        //        bool dominant = EnterBool;
+        //        return new Bee._Gens(dominant);
+        //    }
+        //}
+        //#endregion
+        //static Bee BeeGetter
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine("Enter name");
+        //        string name = EnterStr;
+        //        Console.WriteLine("Enter effect");
+        //        string effect = EnterStr;
+        //        return new Bee(name, EnterProd, BeeType, effect, Conditions, Gens);
+        //    }
+        //}
+        //static int Item(BeesRegistry registry)
+        //{
+        //    int item;
+        //    do
+        //    {
+        //        Console.WriteLine("Enter index of bee");
+        //        item = EnterInt;
+        //        if (item >= 0 && item < registry.LastIndex)
+        //            break;
+        //        else
+        //            Console.WriteLine("Incorrect index");
+        //    } while (true);
+        //    return item;
+        //}
+
+        //static void Remove(BeesRegistry registry)
+        //{
+        //    Console.WriteLine("Remove");
+        //    Console.WriteLine("0 - Exit");
+        //    Console.WriteLine("1 - Show all bees");
+        //    Console.WriteLine("2 - Delete with index");
+        //    Console.WriteLine("3 - Delete with name");
+        //    Console.WriteLine("4 - Delete concrete bee");
+        //    Console.WriteLine("5 - Delete ALL");
+        //    switch (Console.ReadLine()[0])
+        //    {
+        //        case '1':
+        //            registry.ShowAll();
+        //            break;
+        //        case '2':
+        //            registry.RemoveBee(EnterInt);
+        //            break;
+        //        case '3':
+        //            registry.RemoveBee(EnterStr);
+        //            break;
+        //        case '4':
+        //            registry.RemoveBee(BeeGetter);
+        //            break;
+        //        case '5':
+        //            registry.Clear();
+        //            break;
+        //        case '0':
+        //            break;
+        //        default:
+        //            Console.WriteLine("Incorrect input");
+        //            break;
+        //    }
+        //}
+
         /*static void Main()
         {
             BeesRegistry registry = new BeesRegistry();

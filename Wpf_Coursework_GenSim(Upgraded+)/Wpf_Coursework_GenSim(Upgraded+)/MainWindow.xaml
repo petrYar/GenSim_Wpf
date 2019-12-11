@@ -138,19 +138,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <!--#region Images-->
-            <Image Source="Images/Honey.png"
+            <Image Source="bin/Debug/Images/Honey.png"
                    Grid.Row="0"/>
-            <Image Source="Images/Question.png"
+            <Image Source="bin/Debug/Images/Question.png"
                    Grid.Row="1"/>
-            <Image Source="Images/Arrow.png"
+            <Image Source="bin/Debug/Images/Arrow.png"
                    Grid.Row="2"/>
-            <Image Source="Images/One.png"
+            <Image Source="bin/Debug/Images/One.png"
                    Grid.Row="3"/>
-            <Image Source="Images/Two.png"
+            <Image Source="bin/Debug/Images/Two.png"
                    Grid.Row="4"/>
-            <Image Source="Images/Three.png"
+            <Image Source="bin/Debug/Images/Three.png"
                    Grid.Row="5"/>
-            <Image Source="Images/Four.png"
+            <Image Source="bin/Debug/Images/Four.png"
                    Grid.Row="6"/>
             <!--#endregion-->
         </Grid>
