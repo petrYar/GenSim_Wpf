@@ -118,7 +118,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             _Gens gens;
             Image image;
 
-            public Bee(Image image, string name = "NoName", _Product product = _Product.HoneyComb, _BeeType beeType = _BeeType.Meadow,
+            public Bee(Image image = null, string name = "NoName", _Product product = _Product.HoneyComb, _BeeType beeType = _BeeType.Meadow,
                 string effects = "None", _Conditions conditions = new _Conditions(), _Gens gens = new _Gens())
             {
                 Name = name;
@@ -268,9 +268,9 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             List<Bee> standartBees = new List<Bee>();//List of bees that can be
             public BeesRegistry() { }
-            public void AddBee(string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens, Image image)//Add 1 bee to the List
+            public void AddBee(Image image,string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens)//Add 1 bee to the List
             {
-                standartBees.Add(new Bee(name, product, beeType, effects, conditions, gens, image));
+                standartBees.Add(new Bee(image, name, product, beeType, effects, conditions, gens));
             }
             public void AddBee(Bee bee)//Add 1 bee to the List
             {
@@ -357,6 +357,21 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 {
                     return standartBees.Count;
                 }
+            }
+            public void StandartPack()//Adding bees to standart pack
+            {
+                AddBee(new Bee(null, "1", Bee._Product.HoneyComb, Bee._BeeType.Meadow, "No",
+                    new Bee._Conditions(30, 50, Bee._Conditions._Flowers.Plains, Bee._Conditions._Biom.Plains),
+                    new Bee._Gens(true)));
+                AddBee(new Bee(null, "2", Bee._Product.DryComb, Bee._BeeType.Desert, "No",
+                    new Bee._Conditions(55, 20, Bee._Conditions._Flowers.Desert, Bee._Conditions._Biom.Desert),
+                    new Bee._Gens(true)));
+                AddBee(new Bee(null, "3", Bee._Product.WetComb, Bee._BeeType.Forest, "Poisonous",
+                    new Bee._Conditions(40, 85, Bee._Conditions._Flowers.Jungle, Bee._Conditions._Biom.Jungle),
+                    new Bee._Gens(true)));
+                AddBee(new Bee(null, "4", Bee._Product.FrozenComb, Bee._BeeType.Frost, "Icy",
+                    new Bee._Conditions(0, 30, Bee._Conditions._Flowers.Swamp, Bee._Conditions._Biom.Swamp),
+                    new Bee._Gens(true)));
             }
         }
         public interface BeePrototype //prototype

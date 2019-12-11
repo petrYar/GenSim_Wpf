@@ -20,22 +20,17 @@ namespace Wpf_Coursework_GenSim_Upgraded__
     /// </summary>
     public partial class Storage : Window
     {
+        BeesRegistry bees;
         public Storage()
         {
             InitializeComponent();
-            List<Bee> bees = new List<Bee>()
-            {
-                new Bee()
-                {
-                    Name="бджола",
-                    //Image = new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory, "Images\image.jpg"), UriKind.Absolute));     
-                }
-            };
+            bees.StandartPack();
             StorageList.ItemsSource = bees;
         }
 
         private void Mouse_Down(object sender, MouseButtonEventArgs e)
         {
+
         }
 
         private void ImgBee_Drop(object sender, DragEventArgs e)
