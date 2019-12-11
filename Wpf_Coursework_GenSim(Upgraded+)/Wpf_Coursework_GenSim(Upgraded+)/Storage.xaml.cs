@@ -20,7 +20,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
     /// </summary>
     public partial class Storage : Window
     {
-        BeesRegistry bees;
+        BeesRegistry bees = new BeesRegistry();
         public Storage()
         {
             InitializeComponent();

@@ -10,6 +10,7 @@
         Drop="ImgBee_Drop"
         Height="500"
         Width="500"
+        WindowStartupLocation="Manual"
         Background="LightGray">
     <Window.Resources>
         <Style TargetType="Image">
@@ -42,8 +43,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                    <Image Source="{Binding Path=Image}" />
-                    <TextBlock Text="{Binding Path=Name}" />
+                        <Image Width="50"  Height="50" Source="{Binding Path=Bitmap}" />
+                        <TextBlock Text="{Binding Path=Name}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

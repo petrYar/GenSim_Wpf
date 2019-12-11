@@ -10,6 +10,7 @@
         Drop="Window_Drop"
         Height="450"
         Width="525"
+        WindowStartupLocation="Manual"
         ResizeMode="NoResize"
         Background="LightGray">
     <Window.Resources>
@@ -138,19 +139,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <!--#region Images-->
-            <Image Source="bin/Debug/Images/Honey.png"
+            <Image Source = "Images/Honey.png"
                    Grid.Row="0"/>
-            <Image Source="bin/Debug/Images/Question.png"
+            <Image Source="Images/Question.png"
                    Grid.Row="1"/>
-            <Image Source="bin/Debug/Images/Arrow.png"
+            <Image Source="Images/Arrow.png"
                    Grid.Row="2"/>
-            <Image Source="bin/Debug/Images/One.png"
+            <Image Source="Images/One.png"
                    Grid.Row="3"/>
-            <Image Source="bin/Debug/Images/Two.png"
+            <Image Source="Images/Two.png"
                    Grid.Row="4"/>
-            <Image Source="bin/Debug/Images/Three.png"
+            <Image Source="Images/Three.png"
                    Grid.Row="5"/>
-            <Image Source="bin/Debug/Images/Four.png"
+            <Image Source="Images/Four.png"
                    Grid.Row="6"/>
             <!--#endregion-->
         </Grid>

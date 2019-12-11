@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
 using System.Collections;
+using System.Windows.Media.Imaging;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
@@ -129,7 +130,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Gens = gens;
                 Effects = effects;
                 if (image == null)
-                    image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                    this.image = Image.FromFile("Images/Bees/CommonBee.png");
                 else
                     Image = image;
             }
@@ -236,15 +237,34 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 set
                 {
                     if(value == null)
-                        this.image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                        this.image = Image.FromFile("Images/Bees/CommonBee.png");
                     else if (value.GetType() == image.GetType())
                         this.image = value;
                     else
-                        this.image = Image.FromFile("bin/Debug/Images/Bees/CommonBee.png");
+                        this.image = Image.FromFile("Images/Bees/CommonBee.png");
                 }
                 get
                 {
                     return this.image;
+                }
+            }
+            public BitmapImage Bitmap//Bitmap of image which is in the Bee
+            {
+                get
+                {
+                    BitmapImage bmImg = new BitmapImage();
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                        stream.Position = 0;
+
+                        bmImg.BeginInit();
+                        bmImg.CacheOption = BitmapCacheOption.OnLoad;
+                        bmImg.UriSource = null;
+                        bmImg.StreamSource = stream;
+                        bmImg.EndInit();
+                    }
+                    return bmImg;
                 }
             }
             #endregion
