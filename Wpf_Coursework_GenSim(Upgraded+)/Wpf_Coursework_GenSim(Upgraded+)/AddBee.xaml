@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Coursework_GenSim_Upgraded__"
         mc:Ignorable="d"
-        Title="AddBee" Height="265" Width="400"
+        Title="AddBee" Height="290" Width="400"
         ResizeMode="NoResize"
         Background="LightGray">
     <Window.Resources>
@@ -34,12 +34,13 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Name:"
                    Grid.Row="0"/>
         <TextBox Grid.Row="0"
                  Margin="40 0 0 0"/>
-        
+
         <TextBlock Grid.Row="1"
                    Text="Effect:"/>
         <TextBox Grid.Row="1"
@@ -49,14 +50,20 @@
                    Text="Product:"/>
         <ComboBox Grid.Row="2"
                  Margin="50 0 0 0">
-            <Button/>
+            <TextBlock Text="HoneyComb"/>
+            <TextBlock Text="FrozenComb"/>
+            <TextBlock Text="DryComb"/>
+            <TextBlock Text="WetComb"/>
         </ComboBox>
-        
+
         <TextBlock Grid.Row="3"
                    Text="Type:"/>
         <ComboBox Grid.Row="3"
                  Margin="30 0 0 0">
-            <Button/>
+            <TextBlock Text="Meadow"/>
+            <TextBlock Text="Forest"/>
+            <TextBlock Text="Desert"/>
+            <TextBlock Text="Frost"/>
         </ComboBox>
 
         <TextBlock Grid.Row="4"
@@ -69,24 +76,40 @@
                    Grid.Row="5"/>
         <TextBox Grid.Row="5"
                  Margin="70 0 0 0"/>
-        
+
         <TextBlock Text="Humidity:"
                    Grid.Row="6"/>
         <TextBox Grid.Row="6"
                  Margin="60 0 0 0"/>
-        
+
         <TextBlock Grid.Row="7"
                    Text="Flowers:"/>
         <ComboBox Grid.Row="7"
                  Margin="50 0 0 0">
-            <Button/>
+            <TextBlock Text="Plains"/>
+            <TextBlock Text="Desert"/>
+            <TextBlock Text="Swamp"/>
+            <TextBlock Text="Jungle"/>
         </ComboBox>
-        
+
         <TextBlock Grid.Row="8"
                    Text="Biom:"/>
         <ComboBox Grid.Row="8"
                  Margin="40 0 0 0">
-            <Button/>
+            <TextBlock Text="Plains"/>
+            <TextBlock Text="Desert"/>
+            <TextBlock Text="Swamp"/>
+            <TextBlock Text="Jungle"/>
         </ComboBox>
+        <Button Grid.Row="9"
+                HorizontalAlignment="Left"
+                Width="100"
+                Content="Cancel"
+                Click="Cancel_Click"/>
+        <Button Grid.Row="9"
+                HorizontalAlignment="Right"
+                Width="100"
+                Content="Ok"
+                Click="Ok_Click"/>
     </Grid>
 </Window>

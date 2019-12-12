@@ -23,5 +23,15 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             InitializeComponent();
         }
+
+        private void Ok_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

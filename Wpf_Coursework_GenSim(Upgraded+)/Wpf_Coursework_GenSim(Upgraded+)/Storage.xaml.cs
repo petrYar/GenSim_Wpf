@@ -47,7 +47,8 @@ namespace Wpf_Coursework_GenSim_Upgraded__
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            AddBee addBee = new AddBee();
+            addBee.Show();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
