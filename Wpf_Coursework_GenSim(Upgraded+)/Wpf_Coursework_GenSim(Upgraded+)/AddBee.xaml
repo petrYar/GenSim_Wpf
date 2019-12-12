@@ -39,17 +39,20 @@
         <TextBlock Text="Name:"
                    Grid.Row="0"/>
         <TextBox Grid.Row="0"
-                 Margin="40 0 0 0"/>
+                 Margin="40 0 0 0"
+                 Name="NameEnter"/>
 
         <TextBlock Grid.Row="1"
                    Text="Effect:"/>
         <TextBox Grid.Row="1"
-                 Margin="40 0 0 0"/>
+                 Margin="40 0 0 0"
+                 Name="EffectEnter"/>
 
         <TextBlock Grid.Row="2"
                    Text="Product:"/>
         <ComboBox Grid.Row="2"
-                 Margin="50 0 0 0">
+                 Margin="50 0 0 0"
+                 Name="ProductEnter">
             <TextBlock Text="HoneyComb"/>
             <TextBlock Text="FrozenComb"/>
             <TextBlock Text="DryComb"/>
@@ -59,7 +62,8 @@
         <TextBlock Grid.Row="3"
                    Text="Type:"/>
         <ComboBox Grid.Row="3"
-                 Margin="30 0 0 0">
+                 Margin="30 0 0 0"
+                 Name="TypeEnter">
             <TextBlock Text="Meadow"/>
             <TextBlock Text="Forest"/>
             <TextBlock Text="Desert"/>
@@ -75,17 +79,20 @@
         <TextBlock Text="Temperature:"
                    Grid.Row="5"/>
         <TextBox Grid.Row="5"
-                 Margin="70 0 0 0"/>
+                 Margin="70 0 0 0"
+                 Name="Cond_TempEnter"/>
 
         <TextBlock Text="Humidity:"
                    Grid.Row="6"/>
         <TextBox Grid.Row="6"
-                 Margin="60 0 0 0"/>
+                 Margin="60 0 0 0"
+                 Name="Cond_HumidEnter"/>
 
         <TextBlock Grid.Row="7"
                    Text="Flowers:"/>
         <ComboBox Grid.Row="7"
-                 Margin="50 0 0 0">
+                 Margin="50 0 0 0"
+                 Name="Cond_FlowersEnter">
             <TextBlock Text="Plains"/>
             <TextBlock Text="Desert"/>
             <TextBlock Text="Swamp"/>
@@ -95,12 +102,14 @@
         <TextBlock Grid.Row="8"
                    Text="Biom:"/>
         <ComboBox Grid.Row="8"
-                 Margin="40 0 0 0">
+                 Margin="40 0 0 0"
+                 Name="Cond_BiomEnter">
             <TextBlock Text="Plains"/>
             <TextBlock Text="Desert"/>
             <TextBlock Text="Swamp"/>
             <TextBlock Text="Jungle"/>
         </ComboBox>
+        
         <Button Grid.Row="9"
                 HorizontalAlignment="Left"
                 Width="100"

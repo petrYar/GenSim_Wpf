@@ -37,6 +37,13 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                     Flowers = flowers;
                     Biom = biom;
                 }
+                public _Conditions(string flowers, string biom, int temperature = 30, int humidity = 50) : this()
+                {
+                    Temperature = temperature;
+                    Humidity = humidity;
+                    //Flowers = flowers;
+                    //Biom = biom;
+                }
                 public int Temperature
                 {
                     set
@@ -153,6 +160,20 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Gens = source.Gens;
                 Effects = source.Effects;
                 Image = source.Image;
+            }
+            public Bee(string product, string beeType, Image image = null, string name = "NoName", 
+                string effects = "None", _Conditions conditions = new _Conditions(), _Gens gens = new _Gens())
+            {
+                Name = name;
+                //Product = product;
+                //BeeType = beeType;
+                Conditions = conditions;
+                Gens = gens;
+                Effects = effects;
+                if (image == null)
+                    this.image = Image.FromFile("Images/Bees/CommonBee.png");
+                else
+                    Image = image;
             }
             #region Properties
             public string Name//name of Bee
