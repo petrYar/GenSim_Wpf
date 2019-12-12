@@ -24,28 +24,60 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         public Storage()
         {
             InitializeComponent();
-            bees.StandartPack();
-            StorageList.ItemsSource = bees.GetList();
+            this.Left = SystemParameters.PrimaryScreenWidth / 10;
+            this.Top = SystemParameters.PrimaryScreenWidth / 7;
         }
 
-        private void Mouse_Down(object sender, MouseButtonEventArgs e)
-        {
+        //Drop="ImgBee_Drop"
 
-        }
+        //private void ImgBee_Drop(object sender, DragEventArgs e)
+        //{
+        //    Image elem = e.Data.GetData(typeof(Image)) as Image;
 
-        private void ImgBee_Drop(object sender, DragEventArgs e)
-        {
-            Image elem = e.Data.GetData(typeof(Image)) as Image;
+        //    Panel element = elem.Parent as Panel;
+        //    element.Children.Remove(element);
 
-            Panel element = elem.Parent as Panel;
-            element.Children.Remove(element);
-
-            //StorageList.Children.Add(element);
-        }
+        //    //StorageList.Children.Add(element);
+        //}
 
         private void StorageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DragDrop.DoDragDrop(this, this, DragDropEffects.Move);
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (StorageList.SelectedItem != null)
+            {
+                bees.RemoveBee(StorageList.SelectedItem as Bee);
+                RefreshStorage();
+            }
+        }
+
+        private void Clone_Click(object sender, RoutedEventArgs e)
+        {
+            if (StorageList.SelectedItem != null)
+            {
+                bees.AddBee((StorageList.SelectedItem as Bee)._Clone());
+                RefreshStorage();
+            }
+        }
+
+        private void StPack_Click(object sender, RoutedEventArgs e)
+        {
+            bees.StandartPack();
+            RefreshStorage();
+        }
+
+        public void RefreshStorage()
+        {
+            StorageList.ItemsSource = null;
+            StorageList.ItemsSource = bees.GetList();
         }
     }
 }

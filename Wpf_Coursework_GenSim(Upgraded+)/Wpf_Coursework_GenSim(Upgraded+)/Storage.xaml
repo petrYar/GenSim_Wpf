@@ -7,7 +7,6 @@
         AllowDrop="True"
         mc:Ignorable="d"
         Title="Storage"
-        Drop="ImgBee_Drop"
         Height="500"
         Width="500"
         WindowStartupLocation="Manual"
@@ -26,10 +25,10 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Width="75">
-            <Button Content="Add"/>
-            <Button Content="Remove"/>
-            <Button Content="Find"/>
-            <Button Content="Clone"/>
+            <Button Content="Add" Click="Add_Click"/>
+            <Button Content="Remove" Click="Remove_Click"/>
+            <Button Content="Clone" Click="Clone_Click"/>
+            <Button Content="St.Pack" Click="StPack_Click"/>
         </StackPanel>
         <ListView Margin="10" 
                   Name="StorageList"
@@ -44,7 +43,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <Image Width="50"  Height="50" Source="{Binding Path=Bitmap}" />
-                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

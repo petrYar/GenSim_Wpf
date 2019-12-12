@@ -142,6 +142,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Conditions = source.Conditions;
                 Gens = source.Gens;
                 Effects = source.Effects;
+                Image = source.Image;
             }
             public Bee(BeePrototype source)//конструктор-копії
             {
@@ -151,6 +152,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Conditions = source.Conditions;
                 Gens = source.Gens;
                 Effects = source.Effects;
+                Image = source.Image;
             }
             #region Properties
             public string Name//name of Bee
@@ -236,12 +238,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             {
                 set
                 {
-                    if(value == null)
+                    if (value == null)
                         this.image = Image.FromFile("Images/Bees/CommonBee.png");
-                    else if (value.GetType() == image.GetType())
-                        this.image = value;
                     else
-                        this.image = Image.FromFile("Images/Bees/CommonBee.png");
+                        this.image = value as Image;
                 }
                 get
                 {
@@ -274,7 +274,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 bee.gens.Clone = true;
                 return bee;
             }
-            public void ConcretePrototype(BeePrototype b)
+            public void ConcretePrototype(BeePrototype b)//transmit of fields from prototype
             {
                 Bee b_ = b as Bee;
                 Product = b_.Product;
@@ -289,7 +289,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             List<Bee> standartBees = new List<Bee>();//List of bees that can be
             public BeesRegistry() { }
-            public void AddBee(Image image,string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens)//Add 1 bee to the List
+            public void AddBee(Image image, string name, Bee._Product product, Bee._BeeType beeType, string effects, Bee._Conditions conditions, Bee._Gens gens)//Add 1 bee to the List
             {
                 standartBees.Add(new Bee(image, name, product, beeType, effects, conditions, gens));
             }
@@ -397,6 +397,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             public List<Bee> GetList()
             {
                 return this.standartBees;
+            }
+            public Bee ConvertPrototype(BeePrototype clone)
+            {
+                return new Bee(clone);
             }
         }
         public interface BeePrototype //prototype

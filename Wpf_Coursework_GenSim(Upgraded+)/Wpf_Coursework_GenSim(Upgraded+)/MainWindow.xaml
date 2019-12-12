@@ -10,7 +10,7 @@
         Drop="Window_Drop"
         Height="450"
         Width="525"
-        WindowStartupLocation="Manual"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="LightGray">
     <Window.Resources>
