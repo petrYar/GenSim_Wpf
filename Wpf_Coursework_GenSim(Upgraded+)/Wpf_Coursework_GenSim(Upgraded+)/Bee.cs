@@ -41,9 +41,30 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 {
                     Temperature = temperature;
                     Humidity = humidity;
-                    //Flowers = flowers;
-                    //Biom = biom;
+
+                    if (flowers == "Plains")
+                        Flowers = _Flowers.Plains;
+                    else if (flowers == "Swamp")
+                        Flowers = _Flowers.Swamp;
+                    else if (flowers == "Jungle")
+                        Flowers = _Flowers.Jungle;
+                    else if (flowers == "Desert")
+                        Flowers = _Flowers.Desert;
+                    else
+                        Flowers = _Flowers.Plains;
+
+                    if (biom == "Plains")
+                        Biom = _Biom.Plains;
+                    else if (biom == "Swamp")
+                        Biom = _Biom.Swamp;
+                    else if (biom == "Jungle")
+                        Biom = _Biom.Jungle;
+                    else if (biom == "Desert")
+                        Biom = _Biom.Desert;
+                    else
+                        Biom = _Biom.Plains;
                 }
+
                 public int Temperature
                 {
                     set
@@ -161,12 +182,33 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Effects = source.Effects;
                 Image = source.Image;
             }
-            public Bee(string product, string beeType, Image image = null, string name = "NoName", 
+            public Bee(string product, string beeType, Image image = null, string name = "NoName",
                 string effects = "None", _Conditions conditions = new _Conditions(), _Gens gens = new _Gens())
             {
                 Name = name;
-                //Product = product;
-                //BeeType = beeType;
+
+                if (product == "HoneyComb")
+                    Product = _Product.HoneyComb;
+                else if (product == "FrozenComb")
+                    Product = _Product.FrozenComb;
+                else if (product == "WetComb")
+                    Product = _Product.WetComb;
+                else if (product == "DryComb")
+                    Product = _Product.DryComb;
+                else
+                    Product = _Product.HoneyComb;
+
+                if (beeType == "Meadow")
+                    BeeType = _BeeType.Meadow;
+                else if (beeType == "Frost")
+                    BeeType = _BeeType.Frost;
+                else if (beeType == "Forest")
+                    BeeType = _BeeType.Forest;
+                else if (beeType == "Desert")
+                    BeeType = _BeeType.Desert;
+                else
+                    BeeType = _BeeType.Meadow;
+
                 Conditions = conditions;
                 Gens = gens;
                 Effects = effects;
