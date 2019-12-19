@@ -59,6 +59,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 RefreshStorage();
             }
         }
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshStorage();
+        }
 
         private void Clone_Click(object sender, RoutedEventArgs e)
         {

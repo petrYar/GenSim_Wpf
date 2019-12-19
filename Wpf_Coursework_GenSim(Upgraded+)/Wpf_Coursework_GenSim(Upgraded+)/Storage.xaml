@@ -29,6 +29,7 @@
             <Button Content="Remove" Click="Remove_Click"/>
             <Button Content="Clone" Click="Clone_Click"/>
             <Button Content="St.Pack" Click="StPack_Click"/>
+            <Button Content="Refresh" Click="Refresh_Click"/>
         </StackPanel>
         <ListView Margin="10" 
                   Name="StorageList"

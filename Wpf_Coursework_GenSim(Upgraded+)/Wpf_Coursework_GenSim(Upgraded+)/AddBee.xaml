@@ -78,15 +78,31 @@
 
         <TextBlock Text="Temperature:"
                    Grid.Row="5"/>
-        <TextBox Grid.Row="5"
-                 Margin="70 0 0 0"
-                 Name="Cond_TempEnter"/>
+        <Slider Grid.Row="5"
+                Margin="70 0 0 0"
+                TickPlacement = "BottomRight"
+                TickFrequency = "5"
+                Foreground="Black"
+                Value="30"
+                Minimum="-50" Maximum="100"
+                SelectionStart="-50"
+                IsSelectionRangeEnabled="True"
+                ValueChanged="Slider_ValueChanged"
+                Name="Cond_TempEnter"/>
 
         <TextBlock Text="Humidity:"
                    Grid.Row="6"/>
-        <TextBox Grid.Row="6"
-                 Margin="60 0 0 0"
-                 Name="Cond_HumidEnter"/>
+        <Slider Grid.Row="6"
+                Margin="60 0 0 0"
+                TickPlacement = "BottomRight"
+                TickFrequency = "5"
+                Foreground="Black"
+                Value="50"
+                Minimum="0" Maximum="100"
+                SelectionStart="0"
+                IsSelectionRangeEnabled="True"
+                ValueChanged="Slider_ValueChanged"
+                Name="Cond_HumidEnter"/>
 
         <TextBlock Grid.Row="7"
                    Text="Flowers:"/>
@@ -109,7 +125,7 @@
             <TextBlock Text="Swamp"/>
             <TextBlock Text="Jungle"/>
         </ComboBox>
-        
+
         <Button Grid.Row="9"
                 HorizontalAlignment="Left"
                 Width="100"

@@ -23,21 +23,21 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             string effects;
             public struct _Conditions//доделать для идеальной работы(но ето не точно)
             {
-                int temperature;
-                int humidity;
+                double temperature;
+                double humidity;
                 public enum _Flowers { Plains = 0, Swamp, Jungle, Desert };
                 _Flowers flowers;
                 public enum _Biom { Plains = 0, Swamp, Jungle, Desert };
                 _Biom biom;
 
-                public _Conditions(int temperature = 30, int humidity = 50, _Flowers flowers = _Flowers.Plains, _Biom biom = _Biom.Plains) : this()
+                public _Conditions(double temperature = 30, double humidity = 50, _Flowers flowers = _Flowers.Plains, _Biom biom = _Biom.Plains) : this()
                 {
                     Temperature = temperature;
                     Humidity = humidity;
                     Flowers = flowers;
                     Biom = biom;
                 }
-                public _Conditions(string flowers, string biom, int temperature = 30, int humidity = 50) : this()
+                public _Conditions(double temperature = 30, double humidity = 50, string flowers = "Plains", string biom = "Plains") : this()
                 {
                     Temperature = temperature;
                     Humidity = humidity;
@@ -65,7 +65,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                         Biom = _Biom.Plains;
                 }
 
-                public int Temperature
+                public double Temperature
                 {
                     set
                     {
@@ -79,14 +79,14 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                         return this.temperature;
                     }
                 }
-                public int Humidity
+                public double Humidity
                 {
                     set
                     {
                         if (value >= 0 && value <= 100)
                             this.humidity = value;
                         else
-                            this.temperature = 50;
+                            this.humidity = 50;
                     }
                     get
                     {
@@ -633,8 +633,8 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         //{
         //    get
         //    {
-        //        int temperature = 0;
-        //        int humidity = 50;
+        //        double temperature = 0;
+        //        double humidity = 50;
         //        do { Console.WriteLine("Temperature"); temperature = EnterInt; } while (temperature < -50 || temperature > 100);
         //        do { Console.WriteLine("Humidity"); humidity = EnterInt; } while (humidity < 0 || humidity > 100);
         //        Bee._Conditions condition = new Bee._Conditions(temperature, humidity, Flowers, Biom);
