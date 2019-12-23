@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
-    class GeneticSimulator
+    public class GeneticSimulator
     {
         public class Bee : BeePrototype
         {
@@ -158,7 +158,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Gens = gens;
                 Effects = effects;
                 if (image == null)
-                    this.image = Image.FromFile("Images/Bees/CommonBee.png");
+                    this.image = Image.FromFile("../../Images/CommonBee.png");
                 else
                     Image = image;
             }
@@ -213,7 +213,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 Gens = gens;
                 Effects = effects;
                 if (image == null)
-                    this.image = Image.FromFile("Images/Bees/CommonBee.png");
+                    this.image = Image.FromFile("../../Images/CommonBee.png");
                 else
                     Image = image;
             }
@@ -302,7 +302,7 @@ namespace Wpf_Coursework_GenSim_Upgraded__
                 set
                 {
                     if (value == null)
-                        this.image = Image.FromFile("Images/Bees/CommonBee.png");
+                        this.image = Image.FromFile("../../Images/CommonBee.png");
                     else
                         this.image = value as Image;
                 }

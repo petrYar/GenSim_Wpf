@@ -25,6 +25,14 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             InitializeComponent();
         }
         Bee bee = new Bee();
+        public Bee Bee()
+        {
+            return this.bee;
+        }
+        public void Clear()
+        {
+            this.bee = null;
+        }
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             bee = new Bee(ProductEnter.Text, TypeEnter.Text, null/*доделать для вставки фото*/, NameEnter.Text, EffectEnter.Text,

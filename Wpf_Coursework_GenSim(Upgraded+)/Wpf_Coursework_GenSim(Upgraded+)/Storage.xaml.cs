@@ -49,6 +49,9 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             AddBee addBee = new AddBee();
             addBee.Show();
+            bees.AddBee(addBee.Bee());
+            addBee.Clear();
+            RefreshStorage();
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
