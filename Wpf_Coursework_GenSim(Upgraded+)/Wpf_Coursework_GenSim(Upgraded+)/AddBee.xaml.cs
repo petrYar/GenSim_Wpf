@@ -38,11 +38,13 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             bee = new Bee(ProductEnter.Text, TypeEnter.Text, null/*доделать для вставки фото*/, NameEnter.Text, EffectEnter.Text,
                 new Bee._Conditions(Cond_TempEnter.Value, Cond_HumidEnter.Value, Cond_FlowersEnter.Text, Cond_BiomEnter.Text),
                 new Bee._Gens()/*сделать ввод генов(Отдельная форма)*/);
+            this.DialogResult = true;
             this.Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

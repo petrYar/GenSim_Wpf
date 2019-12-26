@@ -222,7 +222,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             {
                 set
                 {
-                    this.name = value;
+                    if (value == "")
+                        this.name = "NoName";
+                    else
+                        this.name = value;
                 }
                 get
                 {
@@ -290,7 +293,10 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             {
                 set
                 {
-                    this.effects = value;
+                    if (value == "")
+                        this.effects = "None";
+                    else
+                        this.effects = value;
                 }
                 get
                 {
