@@ -42,7 +42,12 @@ namespace Wpf_Coursework_GenSim_Upgraded__
 
         private void StorageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DragDrop.DoDragDrop(this, this, DragDropEffects.Move);
+            if (StorageList.SelectedItem != null)
+            {
+                DragDrop.DoDragDrop(StorageList, StorageList.SelectedItem, DragDropEffects.Move);
+                bees.RemoveBee(StorageList.SelectedItem as Bee);
+                RefreshStorage();
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -89,6 +94,11 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             StorageList.ItemsSource = null;
             StorageList.ItemsSource = bees.GetList();
+        }
+
+        private void DaD_Drop(object sender, DragEventArgs e)
+        {
+            StorageList.SelectedItem = (Bee)e.Data.GetData(DataFormats.Serializable);
         }
     }
 }

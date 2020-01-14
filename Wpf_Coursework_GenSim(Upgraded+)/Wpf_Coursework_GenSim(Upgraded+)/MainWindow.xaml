@@ -128,7 +128,7 @@
             <!--#endregion-->
             <!--#endregion-->
         </Grid>
-        <Grid DockPanel.Dock="Left" Width="75" Name="gridBees">
+        <Grid DockPanel.Dock="Left" Width="75" x:Name="gridBees">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -143,6 +143,12 @@
                    Grid.Row="0"/>
             <Image Source="Images/Question.png"
                    Grid.Row="1"/>
+            <StackPanel x:Name="whatToLearn"
+                   Grid.Row="1"
+                   Height="50"
+                   Width="50">
+                <Image Source="{Binding Bitmap}"/>
+            </StackPanel>
             <Image Source="Images/Arrow.png"
                    Grid.Row="2"/>
             <Image Source="Images/One.png"

@@ -31,7 +31,7 @@
             <Button Content="St.Pack" Click="StPack_Click"/>
             <Button Content="Refresh" Click="Refresh_Click"/>
         </StackPanel>
-        <ListView Margin="10" 
+        <ListView Margin="10"
                   Name="StorageList"
                   DockPanel.Dock="Left"
                   SelectionChanged="StorageList_SelectionChanged">

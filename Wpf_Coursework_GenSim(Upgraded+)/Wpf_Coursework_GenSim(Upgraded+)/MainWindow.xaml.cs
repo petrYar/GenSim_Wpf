@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Wpf_Coursework_GenSim_Upgraded__.GeneticSimulator;
 
 namespace Wpf_Coursework_GenSim_Upgraded__
 {
@@ -27,11 +28,16 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             storage.Show();
         }
 
+        private void Mouse_Down(object sender, MouseButtonEventArgs e)
+        {
+            DragDrop.DoDragDrop(whatToLearn, whatToLearn, DragDropEffects.Move);
+        }
+
+
         private void Window_Drop(object sender, DragEventArgs e)
         {
-            var l = e.Data.GetData(typeof(Image)) as Image;
-
-            gridBees.Children.Add(l);
+            Bee l = e.Data.GetData(typeof(Bee)) as Bee;
+            whatToLearn.DataContext = l;
         }
     }
 }
