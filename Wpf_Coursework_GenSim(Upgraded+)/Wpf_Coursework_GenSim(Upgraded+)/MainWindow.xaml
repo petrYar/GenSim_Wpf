@@ -147,7 +147,9 @@
                    Grid.Row="1"
                    Height="50"
                    Width="50">
-                <Image Source="{Binding Bitmap}"/>
+                <Image Source="{Binding Bitmap}"
+                       Height="44"
+                       Width="44"/>
             </StackPanel>
             <Image Source="Images/Arrow.png"
                    Grid.Row="2"/>
