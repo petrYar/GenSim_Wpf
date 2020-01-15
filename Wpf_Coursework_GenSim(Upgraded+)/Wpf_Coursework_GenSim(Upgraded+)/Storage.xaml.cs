@@ -28,18 +28,6 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             this.Top = SystemParameters.PrimaryScreenWidth / 7;
         }
 
-        //Drop="ImgBee_Drop"
-
-        //private void ImgBee_Drop(object sender, DragEventArgs e)
-        //{
-        //    Image elem = e.Data.GetData(typeof(Image)) as Image;
-
-        //    Panel element = elem.Parent as Panel;
-        //    element.Children.Remove(element);
-
-        //    //StorageList.Children.Add(element);
-        //}
-
         private void StorageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (StorageList.SelectedItem != null)
@@ -95,10 +83,16 @@ namespace Wpf_Coursework_GenSim_Upgraded__
             StorageList.ItemsSource = null;
             StorageList.ItemsSource = bees.GetList();
         }
-
-        private void DaD_Drop(object sender, DragEventArgs e)
+        //----------------------------------------------//
+        private void Mouse_Down(object sender, MouseButtonEventArgs e)
         {
-            StorageList.SelectedItem = (Bee)e.Data.GetData(DataFormats.Serializable);
+            DragDrop.DoDragDrop(StorageList, StorageList.ItemsSource, DragDropEffects.Move);
+        }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            bees.AddBee(e.Data.GetData(typeof(Bee)) as Bee);
+            RefreshStorage();
         }
     }
 }

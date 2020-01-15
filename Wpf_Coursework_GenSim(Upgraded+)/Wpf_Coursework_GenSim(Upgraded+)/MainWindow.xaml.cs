@@ -32,12 +32,20 @@ namespace Wpf_Coursework_GenSim_Upgraded__
         {
             DragDrop.DoDragDrop(whatToLearn, whatToLearn, DragDropEffects.Move);
         }
-
-
+        
         private void Window_Drop(object sender, DragEventArgs e)
         {
-            Bee l = e.Data.GetData(typeof(Bee)) as Bee;
-            whatToLearn.DataContext = l;
+            whatToLearn.DataContext = null;
+            whatToLearn.DataContext = e.Data.GetData(typeof(Bee)) as Bee;
+        }
+        //----------------------------------------------//
+        private void WhatToLearn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (whatToLearn.Children != null)
+            {
+                DragDrop.DoDragDrop(whatToLearn, whatToLearn.DataContext as Bee, DragDropEffects.Move);
+                whatToLearn.Children.Clear();
+            }
         }
     }
 }

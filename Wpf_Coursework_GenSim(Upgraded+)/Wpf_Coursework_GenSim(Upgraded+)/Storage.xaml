@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Coursework_GenSim_Upgraded__"
         AllowDrop="True"
+        Drop="Window_Drop"
         mc:Ignorable="d"
         Title="Storage"
         Height="500"
