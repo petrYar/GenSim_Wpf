@@ -74,10 +74,17 @@
     <Compile Include="AddBee.xaml.cs">
       <DependentUpon>AddBee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenCombining.xaml.cs">
+      <DependentUpon>GenCombining.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
     <Page Include="AddBee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GenCombining.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
